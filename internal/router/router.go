@@ -33,6 +33,7 @@ func Setup(db *gorm.DB, cfg *config.Config) *gin.Engine {
 	// 管理员路由组
 	// auth.Use(middleware.AdminAuth()) // 可添加管理员权限中间件
 	handler.NewUserHandler(db, auth)
+	handler.NewUserInfoHandler(db, auth)
 
 	return r
 }

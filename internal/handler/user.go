@@ -2,6 +2,7 @@ package handler
 
 import (
 	"gin-web-project/internal/service"
+	"gin-web-project/pkg/utils"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
@@ -21,7 +22,5 @@ func NewUserHandler(db *gorm.DB, apiV1 *gin.RouterGroup) *UserHandler {
 
 func (h UserHandler) Users(context *gin.Context) {
 	users := h.userService.Users()
-	context.JSON(200, gin.H{
-		"users": users,
-	})
+	utils.Success(context, users)
 }
