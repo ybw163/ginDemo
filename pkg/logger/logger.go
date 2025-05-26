@@ -31,13 +31,13 @@ func Init() {
 
 	// 创建日志目录
 	if err := os.MkdirAll(logPath, 0755); err != nil {
-		log.Fatalf("Failed to create log directory: %v", err)
+		panic("Failed to create log directory" + err.Error())
 	}
 
 	// 设置日志输出文件
 	logFile, err := os.OpenFile(filepath.Join(logPath, "app.log"), os.O_CREATE|os.O_RDWR|os.O_APPEND, 0666)
 	if err != nil {
-		log.Fatalf("Failed to open log file: %v", err)
+		panic("Failed to open log file" + err.Error())
 	}
 
 	log.SetOutput(logFile)

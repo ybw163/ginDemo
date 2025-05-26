@@ -13,10 +13,7 @@ import (
 
 func main() {
 	// 加载配置
-	err := config.Load()
-	if err != nil {
-		log.Fatalf("Failed to load config: %v", err)
-	}
+	config.Load()
 	// 初始化日志
 	logger.Init()
 	// 连接数据库

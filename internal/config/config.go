@@ -55,28 +55,24 @@ type RedisConfig struct {
 	DB       int    `mapstructure:"db"`
 }
 
-func Load() error {
+func Load() {
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath("./configs")
 	viper.AddConfigPath(".")
-
 	// 设置默认值
 	setDefaults()
-
 	// 读取环境变量
 	viper.AutomaticEnv()
 
 	if err := viper.ReadInConfig(); err != nil {
-		return err
+		panic("Failed to Load to Config: " + err.Error())
 	}
-
 	var config Config
 	if err := viper.Unmarshal(&config); err != nil {
-		return err
+		panic("Failed to Load to Config: " + err.Error())
 	}
 	Cfg = config
-	return nil
 }
 
 func setDefaults() {
