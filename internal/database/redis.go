@@ -10,7 +10,7 @@ import (
 var RedisClient *redis.Client
 var Ctx = context.Background()
 
-func ConnectRedis() error {
+func ConnectRedis() {
 	redisConfig := config.Cfg.Redis
 	RedisClient = redis.NewClient(&redis.Options{
 		Addr:     fmt.Sprintf("%s:%s", redisConfig.Host, redisConfig.Port),
@@ -20,5 +20,8 @@ func ConnectRedis() error {
 
 	// 测试连接
 	_, err := RedisClient.Ping(Ctx).Result()
-	return err
+	if err != nil {
+		panic("Failed to connect to Mysql: " + err.Error())
+	}
+
 }

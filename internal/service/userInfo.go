@@ -1,6 +1,7 @@
 package service
 
 import (
+	"gin-web-project/internal/database"
 	"gin-web-project/internal/model"
 	"gorm.io/gorm"
 )
@@ -9,8 +10,8 @@ type UserInfoService struct {
 	db *gorm.DB
 }
 
-func NewUserInfoService(db *gorm.DB) *UserInfoService {
-	return &UserInfoService{db: db}
+func NewUserInfoService() *UserInfoService {
+	return &UserInfoService{db: database.Db}
 }
 
 func (u *UserInfoService) Info(userId uint) model.UserInfo {

@@ -11,9 +11,12 @@ import (
 	"time"
 )
 
-var RegisteredModels []interface{}
+var (
+	RegisteredModels []interface{}
+	Db               *gorm.DB
+)
 
-func Connect() (*gorm.DB, error) {
+func Connect() {
 	cfg := config.Cfg.Database
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True&loc=Local",
 		cfg.Username,
@@ -28,25 +31,25 @@ func Connect() (*gorm.DB, error) {
 		Logger: logger.Default.LogMode(logger.Info),
 	})
 	if err != nil {
-		return nil, err
+		panic("Failed to connect to Mysql: " + err.Error())
 	}
 
 	sqlDB, err := db.DB()
 	if err != nil {
-		return nil, err
+		panic("Failed to connect to Mysql: " + err.Error())
 	}
 
 	// 设置连接池
 	sqlDB.SetMaxIdleConns(10)
 	sqlDB.SetMaxOpenConns(100)
 	sqlDB.SetConnMaxLifetime(time.Hour)
-
-	return db, nil
+	Db = db
+	InitDB()
 }
 
-func InitDB(db *gorm.DB) {
+func InitDB() {
 	for _, model := range RegisteredModels {
-		err := db.AutoMigrate(&model)
+		err := Db.AutoMigrate(&model)
 		if err != nil {
 			log.Println("<UNK>:", err)
 			continue

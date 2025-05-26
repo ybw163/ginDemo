@@ -5,16 +5,15 @@ import (
 	"gin-web-project/internal/service"
 	"gin-web-project/pkg/utils"
 	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 )
 
 type AuthHandler struct {
 	authService *service.AuthService
 }
 
-func NewAuthHandler(db *gorm.DB, apiV1 *gin.RouterGroup) *AuthHandler {
+func NewAuthHandler(apiV1 *gin.RouterGroup) *AuthHandler {
 	handler := &AuthHandler{
-		authService: service.NewAuthService(db),
+		authService: service.NewAuthService(),
 	}
 	apiV1.POST("/login", handler.Login)
 	apiV1.POST("/register", handler.Register)

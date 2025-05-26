@@ -5,16 +5,15 @@ import (
 	"gin-web-project/internal/service"
 	"gin-web-project/pkg/utils"
 	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 )
 
 type UserInfoHandler struct {
 	userInfoService *service.UserInfoService
 }
 
-func NewUserInfoHandler(db *gorm.DB, apiV1 *gin.RouterGroup) *UserInfoHandler {
+func NewUserInfoHandler(apiV1 *gin.RouterGroup) *UserInfoHandler {
 	handler := &UserInfoHandler{
-		userInfoService: service.NewUserInfoService(db),
+		userInfoService: service.NewUserInfoService(),
 	}
 	admin := apiV1.Group("/info")
 	admin.GET("/", handler.info)

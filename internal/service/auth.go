@@ -2,6 +2,7 @@ package service
 
 import (
 	"errors"
+	"gin-web-project/internal/database"
 	"gin-web-project/internal/model"
 	"gin-web-project/pkg/utils"
 	"golang.org/x/crypto/bcrypt"
@@ -12,8 +13,8 @@ type AuthService struct {
 	db *gorm.DB
 }
 
-func NewAuthService(db *gorm.DB) *AuthService {
-	return &AuthService{db: db}
+func NewAuthService() *AuthService {
+	return &AuthService{db: database.Db}
 }
 
 func (s *AuthService) Login(username, password string) (string, error) {

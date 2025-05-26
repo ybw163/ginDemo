@@ -5,10 +5,9 @@ import (
 	"gin-web-project/internal/handler"
 	"gin-web-project/internal/middleware"
 	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 )
 
-func Setup(db *gorm.DB) *gin.Engine {
+func Setup() *gin.Engine {
 	// 设置运行模式
 	gin.SetMode(config.Cfg.Server.Mode)
 
@@ -26,14 +25,14 @@ func Setup(db *gorm.DB) *gin.Engine {
 	api := r.Group("/api/v1")
 	// 公开路由
 	public := api.Group("/")
-	handler.NewAuthHandler(db, public)
+	handler.NewAuthHandler(public)
 	// 需要认证的路由
 	auth := api.Group("/")
 	auth.Use(middleware.JWTAuth())
 	// 管理员路由组
 	// auth.Use(middleware.AdminAuth()) // 可添加管理员权限中间件
-	handler.NewUserHandler(db, auth)
-	handler.NewUserInfoHandler(db, auth)
+	handler.NewUserHandler(auth)
+	handler.NewUserInfoHandler(auth)
 
 	return r
 }
