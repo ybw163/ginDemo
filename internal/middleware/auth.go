@@ -2,7 +2,6 @@ package middleware
 
 import (
 	"gin-web-project/internal/database"
-	"gin-web-project/internal/handler"
 	"gin-web-project/pkg/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -30,7 +29,7 @@ func JWTAuth() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
-		redisToken := database.RedisClient.Get(database.Ctx, handler.TokenPrefix+strconv.Itoa(int(claims.UserID)))
+		redisToken := database.RedisClient.Get(database.Ctx, utils.TokenPrefix+strconv.Itoa(int(claims.UserID)))
 		if redisToken.Val() == "" {
 			utils.Error(c, 401, "Invalid token")
 			c.Abort()

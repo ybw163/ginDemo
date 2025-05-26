@@ -16,22 +16,21 @@ func NewAuthService(db *gorm.DB) *AuthService {
 	return &AuthService{db: db}
 }
 
-func (s *AuthService) Login(username, password string) (string, uint, error) {
+func (s *AuthService) Login(username, password string) (string, error) {
 	var user model.User
 	if err := s.db.Where("username = ? OR email = ?", username, username).First(&user).Error; err != nil {
-		return "", 0, errors.New("user not found")
+		return "", errors.New("user not found")
 	}
 
 	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
-		return "", 0, errors.New("invalid password")
+		return "", errors.New("invalid password")
 	}
 
 	token, err := utils.GenerateToken(user.ID, user.Username)
 	if err != nil {
-		return "", 0, err
+		return "", err
 	}
-
-	return token, user.ID, nil
+	return token, nil
 }
 
 func (s *AuthService) Register(username, email, password string) (*model.User, error) {
