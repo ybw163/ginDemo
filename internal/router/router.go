@@ -8,9 +8,9 @@ import (
 	"gorm.io/gorm"
 )
 
-func Setup(db *gorm.DB, cfg *config.Config) *gin.Engine {
+func Setup(db *gorm.DB) *gin.Engine {
 	// 设置运行模式
-	gin.SetMode(cfg.Server.Mode)
+	gin.SetMode(config.Cfg.Server.Mode)
 
 	r := gin.New()
 

@@ -13,7 +13,8 @@ import (
 
 var RegisteredModels []interface{}
 
-func Connect(cfg config.DatabaseConfig) (*gorm.DB, error) {
+func Connect() (*gorm.DB, error) {
+	cfg := config.Cfg.Database
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True&loc=Local",
 		cfg.Username,
 		cfg.Password,

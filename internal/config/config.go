@@ -55,7 +55,7 @@ type RedisConfig struct {
 	DB       int    `mapstructure:"db"`
 }
 
-func Load() (*Config, error) {
+func Load() error {
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath("./configs")
@@ -68,15 +68,15 @@ func Load() (*Config, error) {
 	viper.AutomaticEnv()
 
 	if err := viper.ReadInConfig(); err != nil {
-		return nil, err
+		return err
 	}
 
 	var config Config
 	if err := viper.Unmarshal(&config); err != nil {
-		return nil, err
+		return err
 	}
 	Cfg = config
-	return &config, nil
+	return nil
 }
 
 func setDefaults() {

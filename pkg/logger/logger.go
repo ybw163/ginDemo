@@ -2,6 +2,7 @@ package logger
 
 import (
 	"fmt"
+	"gin-web-project/internal/config"
 	"github.com/sirupsen/logrus"
 	"os"
 	"path/filepath"
@@ -9,7 +10,9 @@ import (
 
 var log *logrus.Logger
 
-func Init(level, logPath string) {
+func Init() {
+	level := config.Cfg.Log.Level
+	logPath := config.Cfg.Log.Path
 	log = logrus.New()
 
 	// 设置日志级别

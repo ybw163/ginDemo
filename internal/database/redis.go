@@ -10,11 +10,12 @@ import (
 var RedisClient *redis.Client
 var Ctx = context.Background()
 
-func ConnectRedis(cfg config.RedisConfig) error {
+func ConnectRedis() error {
+	redisConfig := config.Cfg.Redis
 	RedisClient = redis.NewClient(&redis.Options{
-		Addr:     fmt.Sprintf("%s:%s", cfg.Host, cfg.Port),
-		Password: cfg.Password,
-		DB:       cfg.DB,
+		Addr:     fmt.Sprintf("%s:%s", redisConfig.Host, redisConfig.Port),
+		Password: redisConfig.Password,
+		DB:       redisConfig.DB,
 	})
 
 	// 测试连接
