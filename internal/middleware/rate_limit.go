@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	limiter = rate.NewLimiter(10, 100) // 每秒10个请求，突发100个
+	limiter = rate.NewLimiter(100, 200) // 每秒100个请求，突发100个
 	mu      sync.RWMutex
 	clients = make(map[string]*rate.Limiter)
 )
@@ -18,17 +18,16 @@ func RateLimit() gin.HandlerFunc {
 		clientIP := c.ClientIP()
 
 		mu.RLock()
-		limiter, exists := clients[clientIP]
+		lmt, exists := clients[clientIP]
 		mu.RUnlock()
 
 		if !exists {
 			mu.Lock()
-			limiter = rate.NewLimiter(10, 100)
 			clients[clientIP] = limiter
 			mu.Unlock()
 		}
 
-		if !limiter.Allow() {
+		if !lmt.Allow() {
 			c.JSON(http.StatusTooManyRequests, gin.H{"error": "Rate limit exceeded"})
 			c.Abort()
 			return
