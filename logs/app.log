@@ -34,3 +34,54 @@
 {"level":"info","msg":"::1 - [Mon, 26 May 2025 09:35:17 CST] \"GET /api/v1/admin/users HTTP/1.1 200 2.5057ms \"\" \"\n","time":"2025-05-26T09:35:17+08:00"}
 {"level":"info","msg":"::1 - [Mon, 26 May 2025 09:35:18 CST] \"GET /api/v1/admin/users HTTP/1.1 200 2.2129ms \"\" \"\n","time":"2025-05-26T09:35:18+08:00"}
 {"level":"info","msg":"::1 - [Mon, 26 May 2025 09:35:19 CST] \"GET /api/v1/admin/users HTTP/1.1 200 7.3658ms \"\" \"\n","time":"2025-05-26T09:35:19+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T11:03:07+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:03:21 CST] \"GET /api/v1/admin/users HTTP/1.1 200 12.0327ms \"\" \"\n","time":"2025-05-26T11:03:21+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T11:04:04+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:04:14 CST] \"GET /api/v1/admin/users HTTP/1.1 200 4.5753ms \"\" \"\n","time":"2025-05-26T11:04:14+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T11:11:28+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:11:32 CST] \"GET /api/v1/admin/users HTTP/1.1 200 2.1939ms \"\" \"\n","time":"2025-05-26T11:11:32+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:11:33 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.5066ms \"\" \"\n","time":"2025-05-26T11:11:33+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:11:34 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.7584ms \"\" \"\n","time":"2025-05-26T11:11:34+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:11:34 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.9288ms \"\" \"\n","time":"2025-05-26T11:11:34+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:11:35 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.2013ms \"\" \"\n","time":"2025-05-26T11:11:35+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T11:12:20+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:12:27 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.9857ms \"\" \"\n","time":"2025-05-26T11:12:27+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:12:28 CST] \"GET /api/v1/admin/users HTTP/1.1 200 2.0986ms \"\" \"\n","time":"2025-05-26T11:12:28+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:12:28 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.5225ms \"\" \"\n","time":"2025-05-26T11:12:28+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:12:28 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.8596ms \"\" \"\n","time":"2025-05-26T11:12:28+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:12:28 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.4189ms \"\" \"\n","time":"2025-05-26T11:12:28+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T11:12:45+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:12:57 CST] \"GET /api/v1/admin/users HTTP/1.1 200 2.7369ms \"\" \"\n","time":"2025-05-26T11:12:57+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:12:57 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.5084ms \"\" \"\n","time":"2025-05-26T11:12:57+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T11:13:07+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:13:09 CST] \"GET /api/v1/admin/users HTTP/1.1 200 2.6197ms \"\" \"\n","time":"2025-05-26T11:13:09+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:13:09 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.5136ms \"\" \"\n","time":"2025-05-26T11:13:09+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:13:10 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.3931ms \"\" \"\n","time":"2025-05-26T11:13:10+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:13:10 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.2771ms \"\" \"\n","time":"2025-05-26T11:13:10+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T11:13:32+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:13:35 CST] \"GET /api/v1/admin/users HTTP/1.1 200 2.2585ms \"\" \"\n","time":"2025-05-26T11:13:35+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:13:36 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.7979ms \"\" \"\n","time":"2025-05-26T11:13:36+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:13:36 CST] \"GET /api/v1/admin/users HTTP/1.1 200 2.9402ms \"\" \"\n","time":"2025-05-26T11:13:36+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T11:14:17+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:14:28 CST] \"GET /api/v1/admin/users HTTP/1.1 200 4.8807ms \"\" \"\n","time":"2025-05-26T11:14:28+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:14:29 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.4827ms \"\" \"\n","time":"2025-05-26T11:14:29+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:14:29 CST] \"GET /api/v1/admin/users HTTP/1.1 200 503.4µs \"\" \"\n","time":"2025-05-26T11:14:29+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:14:29 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.2208ms \"\" \"\n","time":"2025-05-26T11:14:29+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:14:29 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.4056ms \"\" \"\n","time":"2025-05-26T11:14:29+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 11:14:29 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.5124ms \"\" \"\n","time":"2025-05-26T11:14:29+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T11:15:50+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T11:16:48+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T11:17:15+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T14:26:02+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 14:30:27 CST] \"POST /api/v1/admin/users HTTP/1.1 404 0s \"\" \"\n","time":"2025-05-26T14:30:27+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 14:30:46 CST] \"POST /api/v1/info/add HTTP/1.1 404 0s \"\" \"\n","time":"2025-05-26T14:30:46+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T14:31:03+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 14:31:05 CST] \"POST /api/v1/info/add HTTP/1.1 400 0s \"\" \"\n","time":"2025-05-26T14:31:05+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 14:31:18 CST] \"POST /api/v1/info/add HTTP/1.1 200 66.5412ms \"\" \"\n","time":"2025-05-26T14:31:18+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 14:32:33 CST] \"GET /api/v1/info/findById HTTP/1.1 500 4.2559ms \"\" \"\n","time":"2025-05-26T14:32:33+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T14:33:45+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 14:34:00 CST] \"GET /api/v1/info/ HTTP/1.1 500 3.1588ms \"\" \"\n","time":"2025-05-26T14:34:00+08:00"}
+{"level":"info","msg":"Server starting on port %s8080","time":"2025-05-26T14:34:42+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 14:34:46 CST] \"GET /api/v1/info/ HTTP/1.1 200 4.8667ms \"\" \"\n","time":"2025-05-26T14:34:46+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 14:36:16 CST] \"GET /api/v1/admin/users HTTP/1.1 200 2.5177ms \"\" \"\n","time":"2025-05-26T14:36:16+08:00"}
+{"level":"info","msg":"::1 - [Mon, 26 May 2025 14:36:30 CST] \"GET /api/v1/admin/users HTTP/1.1 200 1.4866ms \"\" \"\n","time":"2025-05-26T14:36:30+08:00"}
