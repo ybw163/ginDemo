@@ -2,6 +2,7 @@ package utils
 
 import (
 	"errors"
+	"gin-web-project/internal/config"
 	"github.com/golang-jwt/jwt/v5"
 	"time"
 )
@@ -12,14 +13,15 @@ type Claims struct {
 	jwt.RegisteredClaims
 }
 
-var jwtSecret = []byte("your-secret-key") // 应该从配置文件读取
+var jwtSecret = []byte(config.Cfg.JWT.Secret)
 
 func GenerateToken(userID uint, username string) (string, error) {
+	expireDuration := time.Duration(config.Cfg.JWT.ExpireTime) * time.Hour
 	claims := Claims{
 		UserID:   userID,
 		Username: username,
 		RegisteredClaims: jwt.RegisteredClaims{
-			ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
+			ExpiresAt: jwt.NewNumericDate(time.Now().Add(expireDuration)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
 		},
 	}

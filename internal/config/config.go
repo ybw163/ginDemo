@@ -4,51 +4,55 @@ import (
 	"github.com/spf13/viper"
 )
 
+var (
+	Cfg Config
+)
+
 type Config struct {
 	// 服务器配置
-	Server ServerConfig `destructure:"server"`
+	Server ServerConfig `mapstructure:"server"`
 	//数据库配置
-	Database DatabaseConfig `destructure:"database"`
+	Database DatabaseConfig `mapstructure:"database"`
 	// JWT配置
-	JWT JWTConfig `destructure:"jwt"`
+	JWT JWTConfig `mapstructure:"jwt"`
 	// 日志配置
-	Log LogConfig `destructure:"log"`
+	Log LogConfig `mapstructure:"log"`
 	// Redis配置
-	Redis RedisConfig `destructure:"redis"`
+	Redis RedisConfig `mapstructure:"redis"`
 }
 
 type ServerConfig struct {
-	Port         string `destructure:"port"`
-	Mode         string `destructure:"mode"` // debug, release, test
-	ReadTimeout  int    `destructure:"read_timeout"`
-	WriteTimeout int    `destructure:"write_timeout"`
+	Port         string `mapstructure:"port"`
+	Mode         string `mapstructure:"mode"` // debug, release, test
+	ReadTimeout  int    `mapstructure:"read_timeout"`
+	WriteTimeout int    `mapstructure:"write_timeout"`
 }
 
 type DatabaseConfig struct {
-	Driver   string `destructure:"driver"`
-	Host     string `destructure:"host"`
-	Port     string `destructure:"port"`
-	Username string `destructure:"username"`
-	Password string `destructure:"password"`
-	Database string `destructure:"database"`
-	Charset  string `destructure:"charset"`
+	Driver   string `mapstructure:"driver"`
+	Host     string `mapstructure:"host"`
+	Port     string `mapstructure:"port"`
+	Username string `mapstructure:"username"`
+	Password string `mapstructure:"password"`
+	Database string `mapstructure:"database"`
+	Charset  string `mapstructure:"charset"`
 }
 
 type JWTConfig struct {
-	Secret     string `destructure:"secret"`
-	ExpireTime int    `destructure:"expire_time"` // hours
+	Secret     string `mapstructure:"secret"`
+	ExpireTime int    `mapstructure:"expire_time"`
 }
 
 type LogConfig struct {
-	Level string `destructure:"level"`
-	Path  string `destructure:"path"`
+	Level string `mapstructure:"level"`
+	Path  string `mapstructure:"path"`
 }
 
 type RedisConfig struct {
-	Host     string `destructure:"host"`
-	Port     string `destructure:"port"`
-	Password string `destructure:"password"`
-	DB       int    `destructure:"db"`
+	Host     string `mapstructure:"host"`
+	Port     string `mapstructure:"port"`
+	Password string `mapstructure:"password"`
+	DB       int    `mapstructure:"db"`
 }
 
 func Load() (*Config, error) {
@@ -71,7 +75,7 @@ func Load() (*Config, error) {
 	if err := viper.Unmarshal(&config); err != nil {
 		return nil, err
 	}
-
+	Cfg = config
 	return &config, nil
 }
 

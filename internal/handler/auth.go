@@ -1,12 +1,18 @@
 package handler
 
 import (
+	"gin-web-project/internal/config"
+	"gin-web-project/internal/database"
 	"gin-web-project/internal/model"
 	"gin-web-project/internal/service"
 	"gin-web-project/pkg/utils"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
+	"strconv"
+	"time"
 )
+
+var TokenPrefix = "user_token:"
 
 type AuthHandler struct {
 	authService *service.AuthService
@@ -28,12 +34,14 @@ func (h *AuthHandler) Login(c *gin.Context) {
 		return
 	}
 
-	token, err := h.authService.Login(req.Username, req.Password)
+	token, userId, err := h.authService.Login(req.Username, req.Password)
 	if err != nil {
 		utils.Error(c, 401, err.Error())
 		return
 	}
-
+	//保存Token到redis Duration
+	expireDuration := time.Duration(config.Cfg.JWT.ExpireTime) * time.Hour
+	database.RedisClient.Set(database.Ctx, TokenPrefix+strconv.Itoa(int(userId)), token, expireDuration)
 	utils.Success(c, gin.H{"token": token})
 }
 

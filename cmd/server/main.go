@@ -24,7 +24,12 @@ func main() {
 	// 连接数据库
 	db, err := database.Connect(cfg.Database)
 	if err != nil {
-		log.Fatalf("Failed to connect database: %v", err)
+		panic("Failed to connect to Mysql: " + err.Error())
+	}
+	//  初始化Redis
+	redisErr := database.ConnectRedis(cfg.Redis)
+	if redisErr != nil {
+		panic("Failed to connect to Mysql: " + redisErr.Error())
 	}
 
 	// 数据库迁移
