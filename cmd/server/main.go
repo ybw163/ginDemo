@@ -28,9 +28,7 @@ func main() {
 	}
 
 	// 数据库迁移
-	if err := database.Migrate(db); err != nil {
-		log.Fatalf("Failed to migrate database: %v", err)
-	}
+	database.InitDB(db)
 
 	// 设置路由
 	r := router.Setup(db, cfg)

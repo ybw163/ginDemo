@@ -1,5 +1,7 @@
 package model
 
+import "gin-web-project/internal/database"
+
 type User struct {
 	BaseModel
 	Username string `json:"username" gorm:"uniqueIndex;size:50;not null" validate:"required,min=3,max=50"`
@@ -18,4 +20,8 @@ type RegisterRequest struct {
 	Username string `json:"username" validate:"required,min=3,max=50"`
 	Email    string `json:"email" validate:"required,email"`
 	Password string `json:"password" validate:"required,min=6"`
+}
+
+func init() {
+	database.RegisteredModels = append(database.RegisteredModels, &User{})
 }

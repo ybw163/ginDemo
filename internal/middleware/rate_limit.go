@@ -23,7 +23,12 @@ func RateLimit() gin.HandlerFunc {
 
 		if !exists {
 			mu.Lock()
-			clients[clientIP] = limiter
+			// 双检，防止重复创建
+			lmt, exists = clients[clientIP]
+			if !exists {
+				lmt = limiter
+				clients[clientIP] = lmt
+			}
 			mu.Unlock()
 		}
 

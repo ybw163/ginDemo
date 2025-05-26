@@ -3,12 +3,15 @@ package database
 import (
 	"fmt"
 	"gin-web-project/internal/config"
-	"gin-web-project/internal/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
+	"log"
+	"reflect"
 	"time"
 )
+
+var RegisteredModels []interface{}
 
 func Connect(cfg config.DatabaseConfig) (*gorm.DB, error) {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True&loc=Local",
@@ -40,9 +43,13 @@ func Connect(cfg config.DatabaseConfig) (*gorm.DB, error) {
 	return db, nil
 }
 
-func Migrate(db *gorm.DB) error {
-	return db.AutoMigrate(
-		&model.User{},
-		// 添加其他模型
-	)
+func InitDB(db *gorm.DB) {
+	for _, model := range RegisteredModels {
+		err := db.AutoMigrate(&model)
+		if err != nil {
+			log.Println("<UNK>:", err)
+			continue
+		}
+		log.Printf("已自动迁移模型: %v\n", reflect.TypeOf(model).Elem().Name())
+	}
 }
