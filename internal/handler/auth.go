@@ -12,10 +12,13 @@ type AuthHandler struct {
 	authService *service.AuthService
 }
 
-func NewAuthHandler(db *gorm.DB) *AuthHandler {
-	return &AuthHandler{
+func NewAuthHandler(db *gorm.DB, apiV1 *gin.RouterGroup) *AuthHandler {
+	handler := &AuthHandler{
 		authService: service.NewAuthService(db),
 	}
+	apiV1.POST("/login", handler.Login)
+	apiV1.POST("/register", handler.Register)
+	return handler
 }
 
 func (h *AuthHandler) Login(c *gin.Context) {

@@ -10,10 +10,13 @@ type UserHandler struct {
 	userService *service.UserService
 }
 
-func NewUserHandler(db *gorm.DB) *UserHandler {
-	return &UserHandler{
+func NewUserHandler(db *gorm.DB, apiV1 *gin.RouterGroup) *UserHandler {
+	handler := &UserHandler{
 		userService: service.NewUserService(db),
 	}
+	admin := apiV1.Group("/admin")
+	admin.GET("/users", handler.Users)
+	return handler
 }
 
 func (h UserHandler) Users(context *gin.Context) {

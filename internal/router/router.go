@@ -22,43 +22,17 @@ func Setup(db *gorm.DB, cfg *config.Config) *gin.Engine {
 
 	// 健康检查
 	r.GET("/health", handler.HealthCheck)
-
-	// 初始化处理器
-	authHandler := handler.NewAuthHandler(db)
-	userHandler := handler.NewUserHandler(db)
-
 	// API路由组
 	api := r.Group("/api/v1")
-	{
-		// 公开路由
-		public := api.Group("/")
-		{
-			public.POST("/login", authHandler.Login)
-			public.POST("/register", authHandler.Register)
-		}
-
-		// 需要认证的路由
-		auth := api.Group("/")
-		auth.Use(middleware.JWTAuth())
-		{
-			auth.GET("/profile", func(c *gin.Context) {
-				userID := c.GetUint("user_id")
-				username := c.GetString("username")
-				c.JSON(200, gin.H{
-					"user_id":  userID,
-					"username": username,
-				})
-			})
-		}
-
-		// 管理员路由组
-		admin := api.Group("/admin")
-		admin.Use(middleware.JWTAuth())
-		// admin.Use(middleware.AdminAuth()) // 可添加管理员权限中间件
-		{
-			admin.GET("/users", userHandler.Users)
-		}
-	}
+	// 公开路由
+	public := api.Group("/")
+	handler.NewAuthHandler(db, public)
+	// 需要认证的路由
+	auth := api.Group("/")
+	auth.Use(middleware.JWTAuth())
+	// 管理员路由组
+	// auth.Use(middleware.AdminAuth()) // 可添加管理员权限中间件
+	handler.NewUserHandler(db, auth)
 
 	return r
 }
