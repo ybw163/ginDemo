@@ -10,14 +10,18 @@ import (
 func Setup() *gin.Engine {
 	// 设置运行模式
 	gin.SetMode(config.Cfg.Server.Mode)
-
 	r := gin.New()
-
 	// 全局中间件
 	r.Use(middleware.Logger())
 	r.Use(middleware.CORS())
 	r.Use(middleware.RateLimit())
 	r.Use(gin.Recovery())
+	//设置handler
+	setUpHandler(r)
+	return r
+}
+
+func setUpHandler(r *gin.Engine) {
 	// 健康检查
 	handler.HealthCheck(r)
 	// API路由组
@@ -32,6 +36,4 @@ func Setup() *gin.Engine {
 	// auth.Use(middleware.AdminAuth()) // 可添加管理员权限中间件
 	handler.NewUserHandler(auth)
 	handler.NewUserInfoHandler(auth)
-
-	return r
 }
