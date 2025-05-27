@@ -5,9 +5,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func HealthCheck(c *gin.Context) {
-	utils.Success(c, gin.H{
-		"status":  "ok",
-		"message": "Server is running",
+func HealthCheck(r *gin.Engine) {
+	r.GET("/health", func(c *gin.Context) {
+		utils.Success(c, gin.H{
+			"status":  "ok",
+			"message": "Server is running",
+		})
 	})
+
 }

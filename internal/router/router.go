@@ -18,9 +18,8 @@ func Setup() *gin.Engine {
 	r.Use(middleware.CORS())
 	r.Use(middleware.RateLimit())
 	r.Use(gin.Recovery())
-
 	// 健康检查
-	r.GET("/health", handler.HealthCheck)
+	handler.HealthCheck(r)
 	// API路由组
 	api := r.Group("/api/v1")
 	// 公开路由
