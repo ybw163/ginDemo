@@ -16,7 +16,7 @@ var (
 	Db               *gorm.DB
 )
 
-func Connect() {
+func ConnectMySql() {
 	cfg := config.Cfg.Database
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True&loc=Local",
 		cfg.Username,

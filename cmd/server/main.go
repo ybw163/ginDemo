@@ -17,7 +17,7 @@ func main() {
 	// 初始化日志
 	logger.Init()
 	// 连接数据库
-	database.Connect()
+	database.ConnectMySql()
 	// 初始化Redis
 	database.ConnectRedis()
 	//设置路由
